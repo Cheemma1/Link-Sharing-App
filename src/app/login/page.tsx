@@ -1,74 +1,95 @@
-import Image from "next/image";
-import logo from "../../assest/logo.png";
+"use client";
+
+import React, { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import Link from "next/link";
 import mailIcon from "../../assest/mail.svg";
 import lockIcon from "../../assest/lock.svg";
-import Link from "next/link";
+import FormFields from "../../components/FormFields";
+import NavLogo from "../../components/NavLogo";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/supabaseClient";
 
-const LoginPage = () => {
+const schema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+});
+
+const LoginPage: React.FC = () => {
+  const router = useRouter();
+  const [errorNote, setErrorNote] = useState("");
+  type FormData = z.infer<typeof schema>;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    const { email, password } = data;
+    const { data: signInData, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      console.error("Error signing in", error.message);
+      setErrorNote(error.message);
+    } else {
+      router.push("/user");
+      console.log("Successfully signed up:", signInData?.user);
+    }
+  };
+
   return (
     <div className="bg-lightGrey flex flex-col items-center w-full h-screen box-sizing-border">
-      <div className="mt-[4rem] mb-4 flex flex-row items-center ">
-        <div className=" flex w-[2.5rem] h-[2.5rem] ">
-          <Image src={logo} alt="logo" className="w-[2.1rem] h-[2.1rem]" />
-        </div>
-        <h1 className="font-bold text-darkGrey text-[1.5rem]">devlinks</h1>
-      </div>
+      <NavLogo />
       <div className="rounded-[0.8rem] bg-white flex flex-col p-[2.5rem] w-[472px] box-sizing-border">
         <div className="mb-[2.5rem] flex flex-col self-start w-[fit-content] box-sizing-border">
           <h2 className="mb-[0.5rem] font-bold text-[2rem] text-darkGrey">
             Login
           </h2>
-          <p className="font-normal text-[1rem]  text-gray">
-            Add your details below to get back into the app
+          <p className="font-normal text-[1rem] text-gray">
+            Welcome back! Please login to your account.
           </p>
         </div>
-        <form className="flex flex-col items-center w-[fit-content] box-sizing-border">
-          <div className="mb-[1.5rem_] flex flex-col">
-            <label
-              htmlFor="email"
-              className="m-[0_0_0.3rem_0]  font-normal text-[0.8rem]  text-darkGrey font-sans"
-            >
-              Email address
-            </label>
-            <div className="rounded-[0.5rem] border border-gray2 bg-white flex flex-row items-center py-[0.7rem] px-[1rem] w-[24.8rem] ">
-              <Image
-                src={mailIcon}
-                alt="mail-icon"
-                className="w-[0.8rem] h-[0.6rem]"
-              />
-
-              <input
-                className="opacity-50  border-none flex-1 outline-none px-2"
-                placeholder=" e.g. alex@email.com"
-              />
-            </div>
-            <label
-              htmlFor="password"
-              className="mt-4  font-normal text-[0.8rem]  text-darkGrey"
-            >
-              Password
-            </label>
-            <div className="rounded-[0.5rem] border border-gray2 bg-white flex flex-row items-center py-[0.7rem] px-[1rem] w-[24.8rem] ">
-              <Image
-                src={lockIcon}
-                alt="mail-icon"
-                className="w-[0.8rem] h-[0.6rem]"
-              />
-
-              <input
-                className="opacity-50  border-none flex-1 outline-none px-2"
-                placeholder="Enter your password"
-              />
-            </div>
-          </div>
-          <button className="rounded-[0.5rem] bg-purple text-white font-semibold w-full h-[46px]">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col items-center w-[fit-content] box-sizing-border"
+        >
+          <FormFields
+            label="Email address"
+            type="email"
+            placeholder="e.g. alex@email.com"
+            icon={mailIcon}
+            register={register}
+            error={errors.email?.message}
+            id="email"
+          />
+          <FormFields
+            label="Password"
+            type="password"
+            placeholder="At least 8 characters"
+            icon={lockIcon}
+            register={register}
+            error={errors.password?.message}
+            id="password"
+          />
+          <p className="text-red-500 text-sm pt-4">{errorNote}</p>
+          <button
+            type="submit"
+            className="mt-[1.5rem] rounded-[0.5rem] bg-purple text-white font-semibold w-full h-[46px]"
+          >
             Login
           </button>
         </form>
-        <p className=" font-normal text-[1rem] text-grayy mt-4 text-center">
-          Don&apos;t have an accout?
+        <p className="font-normal text-[1rem] text-grayy mt-4 text-center">
+          Don&apos;t have an account?
           <span className="text-purple">
-            <Link href="/signup"> Create account</Link>
+            <Link href="/signup"> Sign Up</Link>
           </span>
         </p>
       </div>
