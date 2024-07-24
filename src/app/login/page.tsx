@@ -11,6 +11,7 @@ import FormFields from "../../components/FormFields";
 import NavLogo from "../../components/NavLogo";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/supabaseClient";
+import { Button } from "@chakra-ui/react";
 
 const schema = z.object({
   email: z.string().email("Invalid email address"),
@@ -79,12 +80,13 @@ const LoginPage: React.FC = () => {
             id="password"
           />
           <p className="text-red-500 text-sm pt-4">{errorNote}</p>
-          <button
+          <Button
+            variant="solid"
             type="submit"
-            className="mt-[1.5rem] rounded-[0.5rem] bg-purple text-white font-semibold w-full h-[46px]"
+            className="mt-[1.5rem] font-semibold w-full h-[46px]"
           >
             Login
-          </button>
+          </Button>
         </form>
         <p className="font-normal text-[1rem] text-grayy mt-4 text-center">
           Don&apos;t have an account?

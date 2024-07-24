@@ -19,6 +19,7 @@ const config: Config = {
         lightpurple: "#EFEBFF",
         gray2: "#D9D9D9",
         grayy: "#888888",
+        midGray: "#EEEEEE",
       },
     },
   },

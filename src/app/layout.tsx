@@ -1,28 +1,24 @@
-import Head from "next/head";
 import "./globals.css";
+import { Providers } from "./providers";
 
-export type Metadata = {
-  title: string;
-  description: string;
-};
-export const metadata: Metadata = {
+export const metadata = {
   title: "Dev Link APP",
   description: "A link sharing app",
+  icons: {
+    icon: "/logo1.svg",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/logo1.svg" type="image/svg+xml" />
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-      </Head>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

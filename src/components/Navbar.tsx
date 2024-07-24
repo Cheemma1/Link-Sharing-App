@@ -3,6 +3,7 @@ import logo from "../assest/logo1.svg";
 import { LinkIcon } from "@heroicons/react/24/solid";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { Button } from "@chakra-ui/react";
 
 const Navbar = () => {
   return (
@@ -34,7 +35,7 @@ const Navbar = () => {
           </span>
         </Link>
       </div>
-      <button>Preview</button>
+      <Button variant="outline">Preview</Button>
     </div>
   );
 };

@@ -1,22 +1,30 @@
-import Head from "next/head";
 import "../../app/globals.css";
 import Navbar from "@/components/Navbar";
+import LinkFrame from "@/components/LinkFrame";
+import { Providers } from "../providers";
 
-export default function UserLayout({
-  children,
-}: {
+export const metadata = {
+  title: "Home",
+  description: "Home page of the Dev Link APP",
+  icons: {
+    icon: "/logo1.svg",
+  },
+};
+
+interface UserLayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function UserLayout({ children }: UserLayoutProps) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/logo1.svg" type="image/svg+xml" />
-        <title>Home</title>
-        <meta name="description" content="Home page of the Dev Link APP" />
-      </Head>
       <body className="bg-lightGrey">
         <Navbar />
-        <main>{children}</main>
+        <main className="flex justify-between container mx-auto p-6">
+          <LinkFrame />
+
+          <Providers>{children}</Providers>
+        </main>
       </body>
     </html>
   );
