@@ -1,6 +1,5 @@
-// app/pages/_app.tsx
 import { ChakraProvider } from "@chakra-ui/react";
-import customTheme from "../theme/theme";
+import customTheme from "../theme/theme"; 
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
 

@@ -1,9 +1,10 @@
+import UserProfile from "@/components/UserProfile";
 import UserLayout from "../UserLayout";
 
 const profilePage = () => {
   return (
     <UserLayout>
-      <h1>Profile</h1>
+      <UserProfile />
     </UserLayout>
   );
 };

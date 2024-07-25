@@ -3,9 +3,21 @@
 import { Button } from "@chakra-ui/react";
 import clickImg from "../assest/Group.png";
 import Image from "next/image";
+import { useState } from "react";
+import AddingLinks from "./AddingLinks";
+
 const LinkText = () => {
+  const [addLinks, setAddLinks] = useState<number[]>([]);
+
+  const handleAddLink = () => {
+    setAddLinks([...addLinks, addLinks.length + 1]);
+  };
+
+  const handleRemove = () => {
+    setAddLinks(addLinks.filter((_, i) => i !== index));
+  };
   return (
-    <div>
+    <div className="bg-white p-4 rounded-md">
       <h1 className="mb-2 self-start   font-bold text-2xl leading-tight text-darkGray">
         Customize your links
       </h1>
@@ -14,30 +26,39 @@ const LinkText = () => {
         world!
       </p>
       <div className="flex flex-col items-center w-full max-w-3xl">
-        <div className="rounded-lg border border-purple-600 mb-6 flex p-2 w-full">
-          <span className="break-words font-sans font-semibold text-base leading-tight text-purple">
-            + Add new link
-          </span>
-        </div>
-        <div className="rounded-xl bg-gray-100 flex flex-col items-center py-16 w-full">
-          <Image
-            src={clickImg}
-            alt="click-vector"
-            className="mb-10 w-40 h-40"
-          />
-          <div className="flex flex-col items-center w-[70%] mx-auto">
-            <h2 className="mb-6 inline-block break-words font-sans font-bold text-2xl leading-tight text-gray-800">
-              Let&apos;s get you started
-            </h2>
-            <p className="text-center break-words font-sans font-normal text-base leading-relaxed text-gray">
-              Use the “Add new link” button to get started. Once you have more
-              than one link, you can reorder and edit them. We&apos;re here to
-              help you share your profiles with everyone!
-            </p>
+        <Button className="w-full" variant="outline" onClick={handleAddLink}>
+          {" "}
+          + Add new link
+        </Button>
+        {addLinks.length === 0 ? (
+          <div className="rounded-xl bg-gray-100 flex flex-col items-center py-16 w-full">
+            <Image
+              src={clickImg}
+              alt="click-vector"
+              className="mb-10 w-40 h-40"
+            />
+            <div className="flex flex-col items-center w-[70%] mx-auto">
+              <h2 className="mb-6 inline-block break-words font-sans font-bold text-2xl leading-tight text-gray-800">
+                Let&apos;s get you started
+              </h2>
+              <p className="text-center break-words font-sans font-normal text-base leading-relaxed text-gray">
+                Use the “Add new link” button to get started. Once you have more
+                than one link, you can reorder and edit them. We&apos;re here to
+                help you share your profiles with everyone!
+              </p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <></>
+        )}
+        {addLinks.map((links, index) => (
+          <AddingLinks key={index} handleRemove={handleRemove} />
+        ))}
       </div>
-      <Button variant="solid">Save</Button>
+
+      <div className="flex items-right justify-end">
+        <Button variant="solid">Save</Button>
+      </div>
     </div>
   );
 };

@@ -5,10 +5,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Link from "next/link";
-import mailIcon from "../../assest/mail.svg";
-import lockIcon from "../../assest/lock.svg";
-import FormFields from "../../components/FormFields";
-import NavLogo from "../../components/NavLogo";
+import mailIcon from "../../../assest/mail.svg";
+import lockIcon from "../../../assest/lock.svg";
+import FormFields from "../../../components/FormFields";
+import NavLogo from "../../../components/NavLogo";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/supabaseClient";
 import { Button } from "@chakra-ui/react";
@@ -91,7 +91,7 @@ const LoginPage: React.FC = () => {
         <p className="font-normal text-[1rem] text-grayy mt-4 text-center">
           Don&apos;t have an account?
           <span className="text-purple">
-            <Link href="/signup"> Sign Up</Link>
+            <Link href="/auth/signup"> Sign Up</Link>
           </span>
         </p>
       </div>

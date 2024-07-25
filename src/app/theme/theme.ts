@@ -1,4 +1,3 @@
-// theme.ts
 import { extendTheme } from "@chakra-ui/react";
 
 const customTheme = extendTheme({
@@ -16,10 +15,10 @@ const customTheme = extendTheme({
           bg: "primary.50",
           color: "white",
           _hover: {
-            bg: "primary.600",
+            bg: "primary.100",
           },
           _active: {
-            bg: "primary.100",
+            bg: "primary.200",
           },
           _disabled: {
             bg: "primary.200",
@@ -31,7 +30,7 @@ const customTheme = extendTheme({
           borderColor: "primary.50",
           color: "primary.50",
           _hover: {
-            bg: "primary.100",
+            bg: "primary.200",
           },
           _active: {
             bg: "primary.100",
@@ -47,20 +46,20 @@ const customTheme = extendTheme({
         ghost: {
           color: "primary.50",
           _hover: {
-            bg: "primary.50",
-          },
-          _active: {
             bg: "primary.100",
           },
+          _active: {
+            bg: "primary.200",
+          },
           _disabled: {
-            color: "primary.100",
+            color: "primary.200",
             cursor: "not-allowed",
           },
         },
         link: {
           color: "primary.50",
           _hover: {
-            textDecoration: "none",
+            textDecoration: "underline",
           },
           _active: {
             color: "primary.100",

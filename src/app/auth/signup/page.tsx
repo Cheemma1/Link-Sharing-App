@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import React from "react";
-import mailIcon from "../../assest/mail.svg";
-import lockIcon from "../../assest/lock.svg";
+import mailIcon from "../../../assest/mail.svg";
+import lockIcon from "../../../assest/lock.svg";
 import { z } from "zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +11,7 @@ import FormFields from "@/components/FormFields";
 import NavLogo from "@/components/NavLogo";
 import { supabase } from "@/supabaseClient";
 import { useRouter } from "next/navigation";
+import { Button } from "@chakra-ui/react";
 
 const schema = z
   .object({
@@ -76,41 +77,41 @@ const SignUp = () => {
               error={errors.email?.message}
             />
 
-<FormFields
-  id="password"
-  label="Create password"
-  type="password"
-  placeholder="At least 8 characters"
-  icon={lockIcon}
-  register={register}
-  error={errors.password?.message}
-/>
+            <FormFields
+              id="password"
+              label="Create password"
+              type="password"
+              placeholder="At least 8 characters"
+              icon={lockIcon}
+              register={register}
+              error={errors.password?.message}
+            />
 
-<FormFields
-  id="confirmPassword"
-  label="Confirm password"
-  type="password"
-  placeholder="At least 8 characters"
-  icon={lockIcon}
-  register={register}
-  error={errors.confirmPassword?.message}
-/>
+            <FormFields
+              id="confirmPassword"
+              label="Confirm password"
+              type="password"
+              placeholder="At least 8 characters"
+              icon={lockIcon}
+              register={register}
+              error={errors.confirmPassword?.message}
+            />
 
             <p className="pt-4 text-grayy text-[12px]">
               Password must contain at least 8 characters
             </p>
           </div>
-          <button
+          <Button
             type="submit"
-            className="rounded-[0.5rem] bg-purple text-white font-semibold w-full h-[46px]"
+            className="rounded-[0.5rem] font-semibold w-full h-[46px]"
           >
             Create account
-          </button>
+          </Button>
         </form>
         <p className=" font-normal text-[1rem] text-grayy mt-4 text-center">
           Already have an accout?
           <span className="text-purple">
-            <Link href="/login"> Login</Link>
+            <Link href="/auth/login"> Login</Link>
           </span>
         </p>
       </div>

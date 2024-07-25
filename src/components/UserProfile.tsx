@@ -1,80 +1,84 @@
-import React from "react";
+"use client";
 
-const UserProfile = () => {
+import { Button } from "@chakra-ui/react";
+import React, { useState } from "react";
+import ImageUpload from "./ImageUpload";
+
+interface UserProfileProps {
+  email: string;
+}
+
+const UserProfile: React.FC<UserProfileProps> = ({ email }) => {
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = { firstName, lastName, selectedImage };
+  };
+
   return (
-    <>
-      <div className="m-[0_0_2.5rem_0] flex flex-col self-start w-[fit-content] box-sizing-border">
-        <h1 className="m-[0_0_0.5rem_0]  font-bold text-[2rem] text-darkGrey">
-          Profile Details
-        </h1>
-        <p className="font-normal text-[1rem] text-gray">
-          Add your details to create a personal touch to your profile.
-        </p>
-      </div>
-      <div className="flex flex-col items-center w-[fit-content] box-sizing-border">
-        <div className="rounded-[0.8rem] bg-[var(--light-grey,#FAFAFA)] m-[0_0_1.5rem_0] flex flex-row p-[1.3rem_2.6rem_1.3rem_1.3rem] w-[fit-content] box-sizing-border">
-          <h2 className="m-[5.3rem_9.5rem_5.3rem_0] font-normal text-[1rem] text-gray">
-            Profile picture
-          </h2>
-          <div className="flex flex-row box-sizing-border">
-            <div className="rounded-[0.8rem] bg-[var(--light-purple,#EFEBFF)] m-[0_1.5rem_0_0] flex flex-col justify-center items-center w-[12.1rem]">
-              <div className="m-[0_0_0.9rem_0rem] flex w-[2.5rem] h-[2.5rem] box-sizing-border">
-                {/* <img className="w-[2rem] h-[1.7rem]" /> */}
-              </div>
-              <span className="break-words font-['Instrument_Sans'] font-[var(--heading-s-font-weight,600)] text-[1rem] leading-[var(--heading-s-line-height,1.5)] text-[var(--purple,#633CFF)]">
-                + Upload Image
-              </span>
-            </div>
-            <p className="m-[4.9rem_0_4.9rem_0] inline-block break-words font-['Instrument_Sans'] font-[var(--body-s-font-weight,400)] text-[0.8rem] leading-[var(--body-s-line-height,1.5)] text-[var(--grey,#737373)]">
-              Image must be below 1024x1024px. Use PNG or JPG format.
-            </p>
-          </div>
-        </div>
-        <div className="rounded-[0.8rem] bg-[var(--light-grey,#FAFAFA)] flex flex-col items-center p-[1.3rem_1.3rem_1.3rem_1.3rem] w-[45.5rem] box-sizing-border">
-          <div className="m-[0_0_0.8rem_0] flex flex-row justify-between w-[43rem] box-sizing-border">
-            <div className="m-[0.8rem_0.8rem_0.8rem_0] inline-block w-[15rem] break-words font-['Instrument_Sans'] font-[var(--body-m-font-weight,400)] text-[1rem] leading-[var(--body-m-line-height,1.5)] text-[var(--grey,#737373)]">
-              First name*
-            </div>
-            <div className="rounded-[0.5rem] border-[0.1rem_solid_var(--borders,#D9D9D9)] bg-[var(--white,#FFFFFF)] p-[0.7rem_0.9rem_0.7rem_0.9rem] w-[27rem] box-sizing-border">
-              <span className="opacity-50 break-words font-['Instrument_Sans'] font-[var(--body-m-font-weight,400)] text-[1rem] leading-[var(--body-m-line-height,1.5)] text-[var(--dark-grey,#333333)]">
-                e.g. John
-              </span>
-            </div>
-          </div>
-          <div className="m-[0_0_0.8rem_0] flex flex-row justify-between w-[43rem] box-sizing-border">
-            <div className="m-[0.8rem_0.8rem_0.8rem_0] inline-block w-[15rem] break-words font-['Instrument_Sans'] font-[var(--body-m-font-weight,400)] text-[1rem] leading-[var(--body-m-line-height,1.5)] text-[var(--grey,#737373)]">
-              Last name*
-            </div>
-            <div className="rounded-[0.5rem] border-[0.1rem_solid_var(--borders,#D9D9D9)] bg-[var(--white,#FFFFFF)] p-[0.7rem_0.9rem_0.7rem_0.9rem] w-[27rem] box-sizing-border">
-              <span className="opacity-50 break-words font-['Instrument_Sans'] font-[var(--body-m-font-weight,400)] text-[1rem] leading-[var(--body-m-line-height,1.5)] text-[var(--dark-grey,#333333)]">
-                e.g. Appleseed
-              </span>
-            </div>
-          </div>
-          <div className="flex flex-row justify-between w-[43rem] box-sizing-border">
-            <div className="m-[0.8rem_0.8rem_0.8rem_0] inline-block w-[15rem] break-words font-['Instrument_Sans'] font-[var(--body-m-font-weight,400)] text-[1rem] leading-[var(--body-m-line-height,1.5)] text-[var(--grey,#737373)]">
-              Email
-            </div>
-            <div className="rounded-[0.5rem] border-[0.1rem_solid_var(--borders,#D9D9D9)] bg-[var(--white,#FFFFFF)] p-[0.7rem_0.9rem_0.7rem_0.9rem] w-[27rem] box-sizing-border">
-              <span className="opacity-50 break-words font-['Instrument_Sans'] font-[var(--body-m-font-weight,400)] text-[1rem] leading-[var(--body-m-line-height,1.5)] text-[var(--dark-grey,#333333)]">
-                e.g. email@example.com
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="bg-white p-4 rounded-md w-full">
+      <h1 className="m-[0_0_0.5rem_0]  font-bold text-[2rem] text-darkGrey">
+        Pro Details
+      </h1>
+      <p className="font-normal text-[1rem] text-gray">
+        Add your details to create a personal touch to your profile.
+      </p>
 
-      <div className="flex flex-col items-end w-[50.5rem] box-sizing-border">
-        <div className="bg-[var(--borders,#D9D9D9)] m-[0_0_1.5rem_0] w-[50.5rem] h-[0.1rem]"></div>
-        <div className="m-[0_2.5rem_0_2.5rem] flex w-[50.5rem] box-sizing-border">
-          <div className="rounded-[0.5rem] bg-[var(--purple,#633CFF)] flex p-[0.7rem_0.1rem_0.7rem_0] w-[5.7rem] h-[fit-content] box-sizing-border">
-            <span className="break-words font-['Instrument_Sans'] font-[var(--heading-s-font-weight,600)] text-[1rem] leading-[var(--heading-s-line-height,1.5)] text-[var(--white,#FFFFFF)]">
-              Save
-            </span>
-          </div>
-        </div>
+      <div className="rounded-[0.8rem] bg-lightGrey mb-[1.5rem] flex flex-row items-center  justify-between p-[1.3rem] box-sizing-border">
+        <h2 className="font-normal text-[1rem] text-gray">Profile picture</h2>
+
+        <ImageUpload
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+        />
       </div>
-    </>
+      <form className="rounded-[0.8rem] bg-lightGrey flex flex-col items-center p-[1.3rem] w-full xl:w-[45.5rem] box-sizing-border">
+        <div className="mb-[0.8rem] flex flex-row justify-between w-[43rem] box-sizing-border">
+          <h3 className="m-[0.8rem_0.8rem_0.8rem_0]  w-[15rem]  font-normal text-[1rem]  text-gray">
+            First name*
+          </h3>
+          <input
+            className="rounded-[0.5rem]  border-[0.1rem] border-gray2 bg-white px-2  h-[48px] w-full  xl:w-[27rem]"
+            placeholder=" e.g. John"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </div>
+        <div className="m-[0_0_0.8rem_0] flex flex-row justify-between w-[43rem] box-sizing-border">
+          <h3 className="m-[0.8rem_0.8rem_0.8rem_0]  w-[15rem]  font-normal text-[1rem]  text-gray">
+            Last name*
+          </h3>
+          <input
+            className="rounded-[0.5rem]  border-[0.1rem] border-gray2 bg-white px-2  h-[48px] w-full  xl:w-[27rem]"
+            placeholder="  e.g. Appleseed"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-row justify-between w-[43rem] box-sizing-border">
+          <h3 className="m-[0.8rem_0.8rem_0.8rem_0]  w-[15rem]  font-normal text-[1rem]  text-gray">
+            Email*
+          </h3>
+          <input
+            className="rounded-[0.5rem]  border-[0.1rem] border-gray2 bg-white h-[48px] px-2 w-full  xl:w-[27rem]"
+            placeholder="e.g. email@example.com"
+            value={email}
+            readOnly
+          />
+        </div>
+      </form>
+
+      <div className="flex items-right justify-end mt-4">
+        <Button type="submit" variant="solid">
+          Save
+        </Button>
+      </div>
+    </div>
   );
 };
 

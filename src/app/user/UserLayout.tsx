@@ -17,15 +17,14 @@ interface UserLayoutProps {
 
 export default function UserLayout({ children }: UserLayoutProps) {
   return (
-    <html lang="en">
-      <body className="bg-lightGrey">
+    <div className="bg-lightGrey font-sans px-4 md:px-8">
+      <header>
         <Navbar />
-        <main className="flex justify-between container mx-auto p-6">
-          <LinkFrame />
-
-          <Providers>{children}</Providers>
-        </main>
-      </body>
-    </html>
+      </header>
+      <main className="flex justify-between gap-4">
+        <LinkFrame />
+        <Providers>{children}</Providers>
+      </main>
+    </div>
   );
 }
