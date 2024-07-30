@@ -1,4 +1,40 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+interface GetLinksProp {
+  id: number;
+  link: string;
+  platform: string;
+  created_at: string;
+  user_id: string;
+}
+
 const LinkFrame = () => {
+  const [getLinks, setGetLinks] = useState<GetLinksProp[]>([]);
+
+  const handleFetchLink = async () => {
+    try {
+      const response = await fetch("/api/getLink");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Fetched result:", result); // Log the response
+      if (Array.isArray(result)) {
+        setGetLinks(result);
+      } else {
+        throw new Error("Unexpected response structure");
+      }
+    } catch (error) {
+      console.error("Error fetching links:", error);
+    }
+  };
+
+  useEffect(() => {
+    handleFetchLink();
+  }, []);
   return (
     <div className="bg-white w-[586px] pt-10  rounded-md hidden lg:block">
       <div className="relative mx-auto border-gray  bg-white border-[1px] rounded-[2.5rem] h-[600px] w-[300px]  pt-2">
