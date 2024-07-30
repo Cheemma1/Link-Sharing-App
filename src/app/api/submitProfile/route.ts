@@ -12,7 +12,7 @@ export default async function POST(req: Request) {
   }
   try {
     const { data, error } = await supabase
-      .from("profiles")
+      .from("userdetails")
       .insert([{ firstName, lastName, email, selectedImage }]);
 
     if (error) {

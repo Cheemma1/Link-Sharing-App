@@ -35,6 +35,7 @@ const LinkFrame = () => {
   useEffect(() => {
     handleFetchLink();
   }, []);
+  
   return (
     <div className="bg-white w-[586px] pt-10  rounded-md hidden lg:block">
       <div className="relative mx-auto border-gray  bg-white border-[1px] rounded-[2.5rem] h-[600px] w-[300px]  pt-2">
