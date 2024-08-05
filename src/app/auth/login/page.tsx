@@ -10,7 +10,7 @@ import lockIcon from "../../../assest/lock.svg";
 import FormFields from "../../../components/FormFields";
 import NavLogo from "../../../components/NavLogo";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/supabaseClient";
+import { supabase } from "../../../utils/supabase/client";
 import { Button } from "@chakra-ui/react";
 
 const schema = z.object({

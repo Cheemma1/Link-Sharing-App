@@ -1,5 +1,6 @@
 "use client";
 
+import { supabase } from "@/utils/supabase/client";
 import { Button, Select } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -16,16 +17,12 @@ const AddingLinks: React.FC<AddingLinksProps> = ({ index, handleRemove }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/submitLink", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ linkInput, selectedOption }),
-      });
+      const { data, error } = await supabase
+        .from("userLink") // Replace 'links' with your actual table name
+        .insert([{ link: linkInput, platform: selectedOption }]);
 
-      if (!response.ok) {
-        throw new Error("Failed to post link");
+      if (error) {
+        throw new Error(error.message);
       }
 
       alert("Link posted successfully!");
@@ -36,6 +33,7 @@ const AddingLinks: React.FC<AddingLinksProps> = ({ index, handleRemove }) => {
       alert("Failed to post link");
     }
   };
+
   return (
     <>
       <div className="mt-4 w-full">
@@ -82,13 +80,13 @@ const AddingLinks: React.FC<AddingLinksProps> = ({ index, handleRemove }) => {
               />
             </div>
           </div>
+          <div className="flex items-right justify-end mt-[5rem] ">
+            <Button variant="solid" type="submit">
+              Save
+            </Button>
+          </div>
         </form>
       </div>
-      {/* <div className="flex items-right justify-end mt-[5rem] ">
-        <Button variant="solid" type="submit">
-          Save
-        </Button>
-      </div> */}
     </>
   );
 };

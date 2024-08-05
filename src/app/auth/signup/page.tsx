@@ -9,7 +9,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import FormFields from "@/components/FormFields";
 import NavLogo from "@/components/NavLogo";
-import { supabase } from "@/supabaseClient";
+import { supabase } from "../../../utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { Button } from "@chakra-ui/react";
 
