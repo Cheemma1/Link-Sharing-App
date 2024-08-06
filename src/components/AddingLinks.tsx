@@ -3,6 +3,7 @@
 import { supabase } from "@/utils/supabase/client";
 import { Button, Select } from "@chakra-ui/react";
 import React, { useState } from "react";
+import SelectSection from "./SelectSection";
 
 interface AddingLinksProps {
   index: number;
@@ -18,7 +19,7 @@ const AddingLinks: React.FC<AddingLinksProps> = ({ index, handleRemove }) => {
 
     try {
       const { data, error } = await supabase
-        .from("userLink") // Replace 'links' with your actual table name
+        .from("userLink") // from supabase table
         .insert([{ link: linkInput, platform: selectedOption }]);
 
       if (error) {
@@ -26,8 +27,8 @@ const AddingLinks: React.FC<AddingLinksProps> = ({ index, handleRemove }) => {
       }
 
       alert("Link posted successfully!");
-      setLinkInput("");
-      setSelectedOption("");
+      // setLinkInput("");
+      // setSelectedOption("");
     } catch (error) {
       console.error("Error posting link:", error);
       alert("Failed to post link");
@@ -53,18 +54,10 @@ const AddingLinks: React.FC<AddingLinksProps> = ({ index, handleRemove }) => {
               <p className="mb-[0.3rem] font-normal text-[0.8rem] text-darkGray">
                 Platform
               </p>
-
-              <Select
-                placeholder="Select option"
-                className="rounded-[0.5rem] border-[0.1rem_solid] border-gray2 bg-white h-[76px] w-full"
-                variant="outline"
-                value={selectedOption}
-                onChange={(e) => setSelectedOption(e.target.value)}
-              >
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </Select>
+              <SelectSection
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+              />
             </div>
             <div>
               <p className="m-[0_0_0.3rem_0] font-normal text-[0.8rem] text-darkGray">
