@@ -36,9 +36,11 @@ const Navbar = () => {
             </span>
           </Link>
         </div>
-        <Button  variant="outline" className="h-[46px] w-[7.1rem]">
-          Preview
-        </Button>
+        <Link href="/preview">
+          <Button variant="outline" className="h-[46px] w-[7.1rem]">
+            Preview
+          </Button>
+        </Link>
       </div>
     </div>
   );

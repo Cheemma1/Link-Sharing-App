@@ -33,6 +33,11 @@ const options = [
     optName: "Twitter",
     optIcon: twitterIcon,
   },
+  {
+    id: 4,
+    optName: "Twitter",
+    optIcon: twitterIcon,
+  },
 ];
 
 const SelectSection: React.FC<SelectSectionProps> = ({
