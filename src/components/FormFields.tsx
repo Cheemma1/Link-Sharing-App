@@ -21,7 +21,7 @@ const FormFields: React.FC<FormFieldProps> = ({
   error,
 }) => {
   return (
-    <div>
+    <div className="w-full">
       <label
         htmlFor={id}
         className="m-[0_0_0.3rem_0]  font-normal text-[0.8rem]  text-darkGrey font-sans"
@@ -31,7 +31,7 @@ const FormFields: React.FC<FormFieldProps> = ({
       <div
         className={`rounded-md border ${
           error ? "border-red-500" : "border-gray2"
-        } bg-white flex items-center py-2 px-3 w-96`}
+        } bg-white flex items-center py-2 px-3 w-full md:w-96`}
       >
         <Image src={icon} alt={`${label}-icon`} className="w-4 h-4" />
         <input

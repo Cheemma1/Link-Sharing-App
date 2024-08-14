@@ -51,10 +51,10 @@ const SignUp = () => {
   };
 
   return (
-    <div className="bg-lightGrey flex flex-col items-center w-full h-screen box-sizing-border">
+    <div className="bg-lightGrey flex flex-col  w-full px-2 md:px-4 md:items-center mx-auto h-screen box-sizing-border">
       <NavLogo />
-      <div className="rounded-[0.8rem] bg-white flex flex-col p-[2.5rem] w-[472px] box-sizing-border">
-        <div className="mb-[2.5rem] flex flex-col self-start w-[fit-content] box-sizing-border">
+      <div className="rounded-[0.8rem] bg-white flex flex-col px-2 md:p-[2.5rem] w-full mx-auto md:w-[472px] box-sizing-border">
+        <div className="mb-[2.5rem] flex flex-col w-[fit-content]  self-start  box-sizing-border">
           <h2 className="mb-[0.5rem] font-bold text-[2rem] text-darkGrey">
             Create Account
           </h2>
@@ -64,46 +64,47 @@ const SignUp = () => {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col items-center w-[fit-content] box-sizing-border"
+          className="flex flex-col items-center w-full box-sizing-border"
         >
-          <div className="mb-[1.5rem_] flex flex-col">
-            <FormFields
-              id="email"
-              label="Email address"
-              type="email"
-              placeholder=" e.g. alex@email.com"
-              icon={mailIcon}
-              register={register}
-              error={errors.email?.message}
-            />
+          {/* <div className="mb-[1.5rem_] flex flex-col"> */}
+          <FormFields
+            id="email"
+            label="Email address"
+            type="email"
+            placeholder=" e.g. alex@email.com"
+            icon={mailIcon}
+            register={register}
+            error={errors.email?.message}
+          />
 
-            <FormFields
-              id="password"
-              label="Create password"
-              type="password"
-              placeholder="At least 8 characters"
-              icon={lockIcon}
-              register={register}
-              error={errors.password?.message}
-            />
+          <FormFields
+            id="password"
+            label="Create password"
+            type="password"
+            placeholder="At least 8 characters"
+            icon={lockIcon}
+            register={register}
+            error={errors.password?.message}
+          />
 
-            <FormFields
-              id="confirmPassword"
-              label="Confirm password"
-              type="password"
-              placeholder="At least 8 characters"
-              icon={lockIcon}
-              register={register}
-              error={errors.confirmPassword?.message}
-            />
+          <FormFields
+            id="confirmPassword"
+            label="Confirm password"
+            type="password"
+            placeholder="At least 8 characters"
+            icon={lockIcon}
+            register={register}
+            error={errors.confirmPassword?.message}
+          />
 
-            <p className="pt-4 text-grayy text-[12px]">
-              Password must contain at least 8 characters
-            </p>
-          </div>
+          <p className="pt-4 text-grayy text-[12px]">
+            Password must contain at least 8 characters
+          </p>
+          {/* </div> */}
           <Button
             type="submit"
             className="rounded-[0.5rem] font-semibold w-full h-[46px]"
+         
           >
             Create account
           </Button>

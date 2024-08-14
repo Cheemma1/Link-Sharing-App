@@ -9,7 +9,17 @@ import {
 import React, { Dispatch, SetStateAction } from "react";
 import githubIcon from "@/assest/teenyicons_github-solid.svg";
 import frontendmentoricon from "@/assest/frontendmemtor-icon.png";
-import twitterIcon from "../assest/twitter-icon.png";
+import twitterIcon from "../assest/twitter.svg";
+import linkedinIcon from "../assest/linkedin.svg";
+import youtubeIcon from "../assest/youtube.svg";
+import facebookIcon from "../assest/bi_facebook.svg";
+import twitchIcon from "../assest/twitch.svg";
+import devtoIcon from "../assest/devto-dark.svg";
+import codewarIcon from "../assest/codewar.svg";
+import freecodecampIcon from "../assest/freecodecamp.svg";
+import gitlabIcon from "../assest/gitlab-fill.svg";
+import hashnodeIcon from "../assest/hashnode.svg";
+import stackoverflowIcon from "../assest/stackoverflow.svg";
 import Image from "next/image";
 
 interface SelectSectionProps {
@@ -35,8 +45,54 @@ const options = [
   },
   {
     id: 4,
-    optName: "Twitter",
-    optIcon: twitterIcon,
+    optName: "Linkedin",
+    optIcon: linkedinIcon,
+  },
+  {
+    id: 5,
+    optName: "Youtube",
+    optIcon: youtubeIcon,
+  },
+
+  {
+    id: 6,
+    optName: "Facebook",
+    optIcon: facebookIcon,
+  },
+  {
+    id: 7,
+    optName: "Twitch",
+    optIcon: twitchIcon,
+  },
+  {
+    id: 8,
+    optName: " Dev.to",
+    optIcon: devtoIcon,
+  },
+  {
+    id: 9,
+    optName: "Codewars",
+    optIcon: codewarIcon,
+  },
+  {
+    id: 10,
+    optName: "Freecodecamp",
+    optIcon: freecodecampIcon,
+  },
+  {
+    id: 11,
+    optName: "Gitlab",
+    optIcon: gitlabIcon,
+  },
+  {
+    id: 12,
+    optName: "Hashnode",
+    optIcon: hashnodeIcon,
+  },
+  {
+    id: 13,
+    optName: "Stack Overflow",
+    optIcon: stackoverflowIcon,
   },
 ];
 
@@ -60,10 +116,10 @@ const SelectSection: React.FC<SelectSectionProps> = ({
             <Image
               src={selectedOptionObject.optIcon}
               alt={selectedOptionObject.optName}
-              height={24}
-              width={24}
+              height={14}
+              width={14}
             />
-            <span>{selectedOptionObject.optName}</span>
+            <span className="text-sm">{selectedOptionObject.optName}</span>
           </Box>
         ) : (
           "Select option"
@@ -80,8 +136,8 @@ const SelectSection: React.FC<SelectSectionProps> = ({
             <Image
               src={opts.optIcon}
               alt={opts.optName}
-              height={24}
-              width={24}
+              height={18}
+              width={18}
             />
             <span>{opts.optName}</span>
           </MenuItem>

@@ -35,14 +35,14 @@ const LinkText = () => {
           + Add new link
         </Button>
         {addLinks.length === 0 ? (
-          <div className=" py-16">
+          <div className=" md:py-16">
             <div className="rounded-xl bg-gray-100 flex flex-col items-center w-full">
               <Image
                 src={clickImg}
                 alt="click-vector"
                 className="mb-10 w-40 h-40"
               />
-              <div className="flex flex-col items-center w-[70%] mx-auto">
+              <div className="flex flex-col items-center md:w-[70%] mx-auto">
                 <h2 className="mb-6 inline-block break-words font-sans font-bold text-2xl leading-tight text-gray-800">
                   Let&apos;s get you started
                 </h2>
@@ -53,9 +53,6 @@ const LinkText = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="flex items-right justify-end mt-[4rem]">
-              <Button variant="solid">Save</Button>
-            </div> */}
           </div>
         ) : (
           addLinks.map((_, index) => (
@@ -77,4 +74,3 @@ const LinkText = () => {
 };
 
 export default LinkText;
-

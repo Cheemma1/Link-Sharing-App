@@ -104,7 +104,7 @@ const PreviewPage = () => {
           </Button>
         </div>
 
-        <div className="bg-white shadow-xl  w-full md:w-[350px] mx-auto rounded-lg mb-[10rem] px-2 md:px-0">
+        <div className="bg-white shadow-xl  w-[95%] md:w-[350px] mx-auto rounded-lg mb-[10rem] px-2 md:px-0">
           <ProfileData />
         </div>
       </div>

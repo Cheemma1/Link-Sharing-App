@@ -7,7 +7,7 @@ import { Button } from "@chakra-ui/react";
 
 const Navbar = () => {
   return (
-    <div className="mb-[1.5rem] w-full mx-auto h-[76px] py-4">
+    <div className="mb-[1.5rem] w-full mx-auto h-[76px] py-4 hidden md:block">
       <div className=" flex items-center justify-between bg-white rounded-md py-2 px-2">
         <div className=" flex  flex-row items-center gap-2 ">
           <Image src={logo} alt="logo" className="w-[2.1rem] h-[2.1rem]" />

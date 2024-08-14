@@ -2,6 +2,7 @@ import "../../app/globals.css";
 import Navbar from "@/components/Navbar";
 import LinkFrame from "@/components/LinkFrame";
 import { Providers } from "../providers";
+import MobNav from "@/components/MobNav";
 
 export const metadata = {
   title: "Home",
@@ -20,6 +21,7 @@ export default function UserLayout({ children }: UserLayoutProps) {
     <div className="bg-lightGrey font-sans px-4 md:px-8">
       <header>
         <Navbar />
+        <MobNav />
       </header>
       <main className="flex justify-between gap-4">
         <LinkFrame />

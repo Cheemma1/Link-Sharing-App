@@ -46,9 +46,9 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-lightGrey flex flex-col items-center w-full h-screen box-sizing-border">
+    <div className="bg-lightGrey flex flex-col  px-2 md:px-4 md:items-center mx-auto h-screen box-sizing-border">
       <NavLogo />
-      <div className="rounded-[0.8rem] bg-white flex flex-col p-[2.5rem] w-[472px] box-sizing-border">
+      <div className="rounded-[0.8rem] bg-white flex flex-col px-2 md:p-[2.5rem] w-full  md:w-[472px] mx-auto box-sizing-border">
         <div className="mb-[2.5rem] flex flex-col self-start w-[fit-content] box-sizing-border">
           <h2 className="mb-[0.5rem] font-bold text-[2rem] text-darkGrey">
             Login
@@ -59,7 +59,7 @@ const LoginPage: React.FC = () => {
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col items-center w-[fit-content] box-sizing-border"
+          className="flex flex-col items-center w-full box-sizing-border"
         >
           <FormFields
             label="Email address"
@@ -84,6 +84,7 @@ const LoginPage: React.FC = () => {
             variant="solid"
             type="submit"
             className="mt-[1.5rem] font-semibold w-full h-[46px]"
+        
           >
             Login
           </Button>
