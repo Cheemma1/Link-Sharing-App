@@ -140,7 +140,7 @@ const ProfileData: React.FC = () => {
   };
 
   return (
-    <div className="pb-4 ">
+    <div className=" pb-4 shadow-2xl rounded-md overflow-y-auto scrollbar-hide">
       {userProfile ? (
         <div className="flex flex-col gap-1 mb-6 pt-16">
           <div className="bg-midGray rounded-full w-[96px] h-[96px] mx-auto border-2 border-purple">

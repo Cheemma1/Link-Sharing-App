@@ -13,7 +13,7 @@ const PreviewPage = () => {
   const generateShareableLink = () => {
     // Generate a unique URL
     const uniqueId = uuidv4();
-    const link = `${window.location.origin}/profile/${uniqueId}`;
+    const link = `${window.location.origin}/preview/profile/${uniqueId}`;
     setShareableLink(link);
     return link;
   };
@@ -93,7 +93,7 @@ const PreviewPage = () => {
   // };
 
   return (
-    <div className="space-y-8">
+    <div className="pb-[22rem]">
       <div className="md:bg-purple h-[357px] rounded-t-none rounded-r-lg rounded-l-lg pt-0 md:pt-10">
         <div className="flex items-center justify-between sm:bg-none md:bg-white px-4 h-[60px] rounded-md md:w-[90%] mx-auto mb-4  md:mb-[8rem] ">
           <Link href="/user/profile">
