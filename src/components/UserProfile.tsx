@@ -322,7 +322,7 @@ const UserProfile: React.FC = () => {
       </p>
 
       <div className="rounded-lg bg-lightGrey mb-6 flex flex-col md:flex-row md:items-center justify-between p-4 ">
-        <h2 className="font-normal text-base text-gray mb-4 md:mb-0">
+        <h2 className="font-normal text-base text-gray  pb-8">
           Profile picture
         </h2>
         <ImageUpload
