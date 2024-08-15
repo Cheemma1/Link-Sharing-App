@@ -63,11 +63,11 @@ const LinkText = () => {
             />
           ))
         )}
-        {/* <div className="flex items-right justify-end mt-[4rem]">
+        <div className="flex items-right justify-end mt-[4rem]">
           <Button variant="solid" type="submit">
             Save
           </Button>
-        </div> */}
+        </div>
       </div>
     </div>
   );

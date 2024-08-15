@@ -118,11 +118,11 @@ const AddingLinks: React.FC<AddingLinksProps> = ({ index, handleRemove }) => {
             </div>
           </div>
         </form>
-        <div className="flex items-right justify-end mt-[5rem] ">
+        {/* <div className="flex items-right justify-end mt-[5rem] ">
           <Button variant="solid" onClick={handleSubmit}>
             Save
           </Button>
-        </div>
+        </div> */}
       </div>
     </>
   );

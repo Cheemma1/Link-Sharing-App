@@ -1,4 +1,4 @@
-import React, { useRef} from "react";
+import React, { useRef } from "react";
 
 import vector from "../assest/imgvector.svg";
 import vectorwhite from "../assest/Vectorwhite.png";
@@ -31,12 +31,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row  ">
       <div
-        className="relative rounded-[0.8rem] m-[0_1.5rem_0_0] flex justify-center items-center w-[12.1rem] cursor-pointer"
+        className={`relative rounded-[0.8rem] m-[0_1.5rem_0_0] flex justify-center items-center lg:w-[12.1rem] cursor-pointer ${
+          imageUrl ? "bg-transparent" : "bg-lightpurple"
+        }`}
         onClick={handleClick}
         style={{
-       
           height: "10rem",
           width: "100%",
         }}
@@ -46,17 +47,18 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             <Image
               src={imageUrl}
               alt="Uploaded Image"
-             
-              className="rounded-[0.8rem] mt-8"
+              className="rounded-[0.8rem] "
               priority={true}
               height={200}
               width={200}
             />
-            <div className="absolute top-12 box-sizing-border flex items-center justify-center flex-col ">
+            <div className="absolute top-12 box-sizing-border flex items-center justify-center flex-col">
               <Image
                 src={vectorwhite}
                 alt="Change Image Icon"
-                className="w-[2rem] h-[1.7rem] mb-4"
+                className=" mb-4"
+                height={20}
+                width={20}
               />
               <p className="font-semibold text-[1rem] text-white">
                 + Change Image
@@ -65,11 +67,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           </>
         ) : (
           <>
-            <div className="flex w-[2.5rem] h-[2.5rem] box-sizing-border bg-lightpurple">
+            <div className="flex w-[2.5rem] h-[2.5rem] box-sizing-border ">
               <Image
                 src={vector}
                 alt="Upload Image Icon"
-                className="w-[2rem] h-[1.7rem]"
+                height={20}
+                width={20}
               />
             </div>
             <p className="font-semibold text-[1rem] text-purple">
@@ -84,7 +87,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           onChange={handleChangeFile}
         />
       </div>
-      <p className=" my-4 md:my-[4.9rem] w-full  md:w-[215px] font-normal text-[0.8rem] text-gray">
+      <p className="  md:my-[4.9rem] w-full pt-10  lg:w-[215px] font-normal text-[0.8rem] text-gray">
         Image must be below 1024x1024px. Use PNG or JPG format.
       </p>
     </div>
